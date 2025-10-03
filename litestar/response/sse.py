@@ -58,7 +58,7 @@ class _ServerSentEventIterator(AsyncIteratorWrapper[bytes]):
             self.content_async_iterator = AsyncIteratorWrapper([content])
         elif isinstance(content, (Iterable, Iterator)):
             self.content_async_iterator = AsyncIteratorWrapper(content)
-        elif isinstance(content, (AsyncIterable, AsyncIterator, AsyncIteratorWrapper)):
+        elif isinstance(content, AsyncIterable):
             self.content_async_iterator = content
         else:
             raise ImproperlyConfiguredException(f"Invalid type {type(content)} for ServerSentEvent")
